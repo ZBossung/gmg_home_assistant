@@ -9,8 +9,17 @@ import binascii
 import ipaddress
 import time
 import logging
+import sys
 
 _LOGGER = logging.getLogger(__name__)
+_LOGGER.setLevel(logging.DEBUG)
+
+console_handler = logging.StreamHandler(sys.stdout)
+console_handler.setLevel(logging.DEBUG)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+console_handler.setFormatter(formatter)
+
+_LOGGER.addHandler(console_handler)
 
 def createGrillObject(ipAddress, grillName):
     grills = []
@@ -80,8 +89,6 @@ def grills(timeout = 1, ip_bind_address = '0.0.0.0'):
 
     _LOGGER.debug(f"Found {len(grills)} grills.")
     return grills
-
-
 
 class grill(object):
     UDP_PORT = 8080
