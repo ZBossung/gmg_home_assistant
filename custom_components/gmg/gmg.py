@@ -100,8 +100,6 @@ class grill(object):
     CODE_SERIAL = b'UL!'
     CODE_STATUS = b'UR001!'
     
-
-
     def getInitialState(self):
         state = {}
 
@@ -111,25 +109,24 @@ class grill(object):
         state['grill_set_temp'] = 0
         state['grill_set_temp_high'] = 0
 
-           # probe 1 stats
+        # probe 1 stats
         state['probe1_temp'] = 0
         state['probe1_temp_high'] = 0
         state['probe1_set_temp'] = 0
         state['probe1_set_temp_high'] = 0
         
-                   # probe 2 stats
+        # probe 2 stats
         state['probe2_temp'] = 0
         state['probe2_temp_high'] = 0
         state['probe2_set_temp'] = 0
         state['probe2_set_temp_high'] = 0
 
-           # Grill health stats
+        # Grill health stats
         state['fireState'] = 0
         state['fireStatePercentage'] = 0
         state['warnState'] = 0
 
         return state
-
 
     def __init__(self, ip, serial_number = ''):
         
@@ -178,7 +175,6 @@ class grill(object):
                 _LOGGER.error(e)
                 
             _LOGGER.debug(f"Status response: {self.state}") 
-     
 
         return self.state
 
@@ -210,7 +206,6 @@ class grill(object):
 
         message = b'UK002!'
         return self.send(message)
-
 
     def power_on(self):
         """Power on the grill"""
@@ -244,7 +239,6 @@ class grill(object):
             _LOGGER.debug(f"Setting grill status: {status}")
 
         return self.gmg_status_response(status)
-
 
     def serial(self):
         """Get serial number of grill"""
